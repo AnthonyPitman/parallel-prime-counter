@@ -7,30 +7,26 @@ class Program
 {
     static int Main(string[] args)
     {
-        int upperBound = 0;
+        string userInput;
         if (args.Length == 1)
         {
-            bool result = int.TryParse(args[0], out upperBound);
-            if (!result)
-            {
-                Console.WriteLine("Input for an upperbound must be a positive integer between 2 and 10,000,000.");
-                return -1;
-            }
+            userInput = args[0];
         }
         else if (args.Length < 1)
         {
             Console.Write("Enter an upperbound as positive integer between 2 and 10,000,000: ");
-            string? inputString = Console.ReadLine();
-            bool result = int.TryParse(inputString, out upperBound);
-            if (!result)
-            {
-                Console.WriteLine("Input for an upperbound must be a positive integer between 2 and 10,000,000.");
-                return -1;
-            }
+            userInput = Console.ReadLine() ?? "";
         }
         else
         {
             Console.WriteLine("Invalid number of program arguments. Please enter a single positive integer between 2 and 10,000,000.");
+            return -1;
+        }
+
+        bool result = int.TryParse(userInput, out int upperBound);
+        if (!result)
+        {
+            Console.WriteLine("Input for upperbound must be a positive integer between 2 and 10,000,000.");
             return -1;
         }
 
