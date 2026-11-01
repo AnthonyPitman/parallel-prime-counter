@@ -43,14 +43,14 @@ class Program
         Stopwatch stopwatch = new();
 
         stopwatch.Start();
-        var sequentialCount = IsPrimeSequential(upperBound);
+        var sequentialCount = CountPrimesSequential(upperBound);
         stopwatch.Stop();
         var sequentialDuration = stopwatch.Elapsed;
         stopwatch.Reset();
 
 
         stopwatch.Start();
-        var parallelCount = IsPrimeParallel(upperBound);
+        var parallelCount = CoutnPrimesParallel(upperBound);
         stopwatch.Stop();
         var parallelDuration = stopwatch.Elapsed;
 
@@ -75,7 +75,7 @@ class Program
         return true;
     }
 
-    private static int IsPrimeSequential(int upperBound)
+    private static int CountPrimesSequential(int upperBound)
     {
         ArgumentOutOfRangeException.ThrowIfLessThan(upperBound, 2);
         ArgumentOutOfRangeException.ThrowIfGreaterThan(upperBound, 10_000_000);
@@ -89,7 +89,7 @@ class Program
         return count;
     }
 
-    private static int IsPrimeParallel(int upperBound)
+    private static int CoutnPrimesParallel(int upperBound)
     {
         ArgumentOutOfRangeException.ThrowIfLessThan(upperBound, 2);
         ArgumentOutOfRangeException.ThrowIfGreaterThan(upperBound, 10_000_000);
